@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Employee {
     private int id;
-    private String name;
+    private String firstname;
     private String lastname;
 
-    public Employee(int id, String name, String lastname) {
+    public Employee(int id, String firstname, String lastname) {
         this.id = id;
-        this.name = name;
+        this.firstname = firstname;
         this.lastname = lastname;
     }
 
@@ -17,8 +17,8 @@ public class Employee {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
     public String getLastname() {
@@ -30,11 +30,20 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id && Objects.equals(name, employee.name) && Objects.equals(lastname, employee.lastname);
+        return id == employee.id && Objects.equals(firstname, employee.firstname) && Objects.equals(lastname, employee.lastname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastname);
+        return Objects.hash(id, firstname, lastname);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
     }
 }

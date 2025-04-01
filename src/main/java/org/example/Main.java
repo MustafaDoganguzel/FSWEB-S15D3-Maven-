@@ -38,24 +38,31 @@ public class Main {
       Map<Integer, Employee > uniqueMap = new HashMap<>();
       Set<Employee> unique = new HashSet<>();
       for (Employee e : employeeList){
-          if(unique.add(e)){
-              uniqueMap.put(e.getId(), e);
+          if(e != null) {
+              if (unique.add(e)) {
+                  uniqueMap.put(e.getId(), e);
+              }
           }
       } return uniqueMap;
     }
 
     public static List<Employee> removeDuplicates(List<Employee> employeeList){
-        Set<Employee> unique = new HashSet<>();
-        List<Employee> duplicates = new ArrayList<>();
+        Set<Employee> uniqueSet = new HashSet<>();
+        Set<Employee> duplicates = new HashSet<>();
+        List<Employee> unique = new ArrayList<>();
 
         for (Employee e : employeeList){
-            if (!unique.add(e)){
-                // islem yapma
-            } else{
+            if (e != null && !uniqueSet.add(e) ){
                 duplicates.add(e);
             }
         }
-        return duplicates;
+
+        for (Employee e : employeeList){
+            if (e != null && !duplicates.contains(e)){
+                unique.add(e);
+            }
+        }
+        return unique;
     }
     // duplicate'leri bulup silmemizi istiyor
 }
